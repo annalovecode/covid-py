@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>analytics1firebase</title>
+</head>
+<body>
+
+<div><h3>problem</h3>Which continent has the most total cases of infection and which continent has the fewest total cases of infection?</div>
+
+<div><h3>table</h3>
+    <table>
+        <tr>
+            {% for i in lables  %}
+            <td>{{ i }}</td>
+            {% endfor %}
+        </tr>
+    {% for i in content %}
+        <tr>
+            {% for j in i %}
+            <td>{{ j }}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    </table>
+</div>
+
+<div><h3>analytics</h3>
+    <h4>conclusion</h4>
+    North America has the most total cases of infection，5919209 cases.<br>
+    Australia / Oceania has the fewest total cases of infection，21735 cases.
+    <h4>analytics function</h4>
+    Select Continent, sum(TotalCases) From worldometer_data Group by Continent;<br>
+    <h4>map reduce</h4>
+    In this case, mapPartition(p) may takes worldometer_data in partition p, output the sum of total cases for each different continent.<br>
+    Reduce function then combines the sum of total cases in.
+</div>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>analytics2firebase</title>
+</head>
+<body>
+
+<div><h3>problem</h3>
+
+What is the death rate from the Covid-19 in each country and region? Which countries and regions have the highest death rate from the Covid-19? Which countries and regions have the lowest death rate from the Covid-19?</div>
+
+<div><h3>table</h3>
+    <table>
+        <tr>
+            {% for i in lables  %}
+            <td>{{ i }}</td>
+            {% endfor %}
+        </tr>
+    {% for i in content %}
+        <tr>
+            {% for j in i %}
+            <td>{{ j }}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    </table>
+</div>
+
+<div><h3>analytics</h3>
+    <h4>conclusion</h4>
+    Of the 187 countries, Yemen, Belgium, United Kingdom, France, Italy, Hungary, Netherlands, Mexico and Spain had the highest death rates of more than 10%. <br>
+    Vietnam, Laos, Grenada, Holy See, Saint Vincent and the Grenadines, Greenland, Timor-Leste, Bhutan, Mongolia, Eritrea, Dominica, Cambodia, Seychelles, Saint Kitts and Nevis, Saint Lucia and Fiji had the lowest death rate at 0%.
+    <h4>analytics function</h4>
+    Select CountryRegion, sum(Deaths)/sum(Confirmed) As MortalityRate From (Select CountryRegion, sum(Deaths), sum(Confirmed) From full_grouped Group by CountryRegion) As A Order by MortalityRate DESC;<br>
+    <h4>map reduce</h4>
+    In this case, mapPartition(p) may takes full_grouped in partition p, output the sum of deaths and the sum of confirmed for each country or region.<br>
+    Reduce function then combines the sum of deaths and the sum of confirmed in, finally calculates the death rate for each country or region.
+</div>
+
+</body>
+</html>

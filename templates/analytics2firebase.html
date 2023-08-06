@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>analytics2firebase</title>
+</head>
+<body>
+
+<div><h3>problem</h3>
+How do new cases and total cases of infection grow from Jan. 2020 to July 2020?</div>
+
+<div><h3>table</h3>
+    <table>
+        <tr>
+            {% for i in lables  %}
+            <td>{{ i }}</td>
+            {% endfor %}
+        </tr>
+    {% for i in content %}
+        <tr>
+            {% for j in i %}
+            <td>{{ j }}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    </table>
+</div>
+
+<div><h3>analytics</h3>
+    <h4>conclusion</h4>
+    From January 2020 to July 2020, the number of new cases increased from 9,372 to 6,030,911.<br>
+    From January 2020 to July 2020, the number of total cases grew from 38,534 to 362,895,848.
+    <h4>analytics function</h4>
+    Select Date, sum(NewCases), sum(TotalCases) From day_wise Group by Date;<br>
+    <h4>map reduce</h4>
+    In this case, mapPartition(p) may takes day_wise in partition p, output the sum of total cases and the sum of new cases for each different date.<br>
+    Reduce function then combines the sum of total cases and the sum of new cases in.
+</div>
+
+</body>
+</html>

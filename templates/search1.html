@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>search1firebase</title>
+</head>
+<body>
+
+<div style="padding-left: 50px"><h2>Search Function:</h2><br><h3>search for confirmed cases</h3></div>
+
+<form class="form-horizontal" method="post" style="padding-left:200px">
+    <label for="quantity">confirmed cases between low to high:</label>
+    <p>low</p><input type="number" id="lo" name="lo">
+    <p>high</p><input type="number" id="hi" name="hi">
+    <div style="align-items: center; margin-top: 40px"><input type="submit" value="Submit"></div>
+  </form>
+
+<div><h3>Results:</h3>
+    <h4>the countries in the range are</h4>
+</div>
+
+<div><h3></h3>
+    <table>
+        <tr>
+            {% for i in content  %}
+            <td>{{ i }}</td>
+            {% endfor %}
+        </tr>
+
+    </table>
+</div>
+
+<div><h3>Explanation:</h3>
+    country_wise_latest.csv is stored in three partitions.
+    Here,we implement mapPartititon(p) that takes partition p, for each country in the
+    partition, check if its price is in the search range, and output the country name if yes.
+
+</div>
+</body>
+</html>

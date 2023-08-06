@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>search1firebase</title>
+</head>
+<body>
+
+<div><h3>Search Function:</h3>search for deaths cases</div>
+
+<form class="form-horizontal" method="post">
+    <label for="quantity">deaths cases between lo to hi:</label>
+    <input type="number" id="lo" name="lo">
+    <input type="number" id="hi" name="hi">
+    <input type="submit" value="Submit">
+  </form>
+
+<div><h3>Results:</h3>
+    <h4>the countries(regions) in the range are</h4>
+</div>
+
+<div><h3></h3>
+    <table>
+        <tr>
+            {% for i in content  %}
+            <td>{{ i }}</td>
+            {% endfor %}
+        </tr>
+
+    </table>
+</div>
+
+<div><h3>Explanation:</h3>
+    ccovid_19_clean_complete.csv is stored in 50 partitions.
+    Here,we implement mapPartititon(p) that takes partition p, for each country in the
+    partition, check if its price is in the search range, and output the country name if yes.
+
+</div>
+</body>
+</html>
